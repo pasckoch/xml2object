@@ -1,6 +1,11 @@
 {
     "name": "kernel-php/xml2object",
     "description": "parser xml2object.",
+    "version": "0.2.1",
+    "type": "library",
+    "keywords": ["php","parser","xml2object"],
+    "homepage": "https://github.com/kernel-php/xml2object",
+    "license": "GPL-3.0",
     "authors": [
         {
             "name": "Pascal Koch",
@@ -8,8 +13,7 @@
         }
     ],
     "require": {
-        "php": ">=5.3.2",      
-        "sunra/dbug": "dev-master"
+        "php": ">=5.3.2"
     },    
     "autoload": {
         "psr-4": {
