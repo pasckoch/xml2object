@@ -1,9 +1,9 @@
 # xml2object
-require "Xml2Object.php";
+# require "Xml2Object.php";
 
-$xml = '<?xml version="1.0" encoding="UTF-8" ?>
-<export>
-	<data>
+# $xml = '<?xml version="1.0" encoding="UTF-8" ?>
+# <export>
+#	<data>
 		<data1>Telephone</data1>
 		<data2>220</data2>
 	</data>

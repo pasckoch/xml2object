@@ -32,7 +32,6 @@ namespace Xml2Object;
 require_once __DIR__.'/lib/DomMechanism.php';
 require_once __DIR__.'/lib/ObjectXml.php';
 require_once __DIR__.'/lib/Xml2ObjectExceptions.php';
-require_once __DIR__ . '/vendor/autoload.php';
 
 class Xml2Object {
 
