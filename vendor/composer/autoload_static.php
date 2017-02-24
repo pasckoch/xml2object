@@ -11,20 +11,12 @@ class ComposerStaticInitb6452ce51cf69bac0121e15c9c0ff5c5
         array (
             'Xml2Object\\' => 11,
         ),
-        'O' => 
-        array (
-            'Ospinto\\' => 8,
-        ),
     );
 
     public static $prefixDirsPsr4 = array (
         'Xml2Object\\' => 
         array (
             0 => __DIR__ . '/../..' . '/',
-        ),
-        'Ospinto\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/sunra/dbug',
         ),
     );
 

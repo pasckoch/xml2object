@@ -7,5 +7,4 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Xml2Object\\' => array($baseDir . '/'),
-    'Ospinto\\' => array($vendorDir . '/sunra/dbug'),
 );
