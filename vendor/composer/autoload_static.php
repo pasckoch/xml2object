@@ -6,10 +6,6 @@ namespace Composer\Autoload;
 
 class ComposerStaticInitb6452ce51cf69bac0121e15c9c0ff5c5
 {
-    public static $files = array (
-        'cfeaa3e4de842818e26350216b9c1dae' => __DIR__ . '/..' . '/ospinto/dbug/dBug.php',
-    );
-
     public static $prefixLengthsPsr4 = array (
         'X' => 
         array (

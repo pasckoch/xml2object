@@ -1,5 +1,5 @@
 {
-    "name": "vendor/xml2object",
+    "name": "kernel-php/xml2object",
     "description": "parser xml2object.",
     "authors": [
         {
@@ -8,13 +8,12 @@
         }
     ],
     "require": {
-         "php": ">=5.3.2",      
+        "php": ">=5.3.2",      
         "sunra/dbug": "dev-master"
     },    
     "autoload": {
-        "psr-4": {"Xml2Object\\": ""}
-    },
-    "require-dev": {
-        "ospinto/dbug": "dev-master"
-    }
+        "psr-4": {
+            "Xml2Object\\": ""
+        }
+    } 
 }

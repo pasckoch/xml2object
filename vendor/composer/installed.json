@@ -47,42 +47,5 @@
             "dump",
             "php"
         ]
-    },
-    {
-        "name": "ospinto/dbug",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/ospinto/dbug.git",
-            "reference": "4a1bb162c021c2cb0103075e25a94926fc0e0eda"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/ospinto/dbug/zipball/4a1bb162c021c2cb0103075e25a94926fc0e0eda",
-            "reference": "4a1bb162c021c2cb0103075e25a94926fc0e0eda",
-            "shasum": ""
-        },
-        "time": "2014-01-20 19:21:40",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "files": [
-                "dBug.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL-3.0"
-        ],
-        "authors": [
-            {
-                "name": "Kwaku Otchere",
-                "email": "ospinto@hotmail.com",
-                "homepage": "http://dbug.ospinto.com/",
-                "role": "Former author"
-            }
-        ],
-        "description": "PHP version of ColdFusion's cfdump. Outputs colored and structured tabular variable information."
     }
 ]
