@@ -1,0 +1,107 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "0ac1747250eb32ca0f9eeba868d1118a",
+    "content-hash": "c24bcae737fbc2cf8fb9b79cf5896d31",
+    "packages": [
+        {
+            "name": "sunra/dbug",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sunra/dBug.git",
+                "reference": "ecd8a589dc3ee1bba84095828c222ff560bc19e5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sunra/dBug/zipball/ecd8a589dc3ee1bba84095828c222ff560bc19e5",
+                "reference": "ecd8a589dc3ee1bba84095828c222ff560bc19e5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ospinto\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "sunra",
+                    "email": "sunra@yandex.ru",
+                    "homepage": "http://github.com/sunra"
+                },
+                {
+                    "name": "Kwaku Otchere",
+                    "email": "ospinto@hotmail.com"
+                }
+            ],
+            "description": "Most beautiful variable dump library for PHP (ColdFusion like style)",
+            "homepage": "http://github.com/sunra/dBug.git",
+            "keywords": [
+                "debug",
+                "dump",
+                "php"
+            ],
+            "time": "2015-12-14 22:37:24"
+        }
+    ],
+    "packages-dev": [
+        {
+            "name": "ospinto/dbug",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ospinto/dbug.git",
+                "reference": "4a1bb162c021c2cb0103075e25a94926fc0e0eda"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ospinto/dbug/zipball/4a1bb162c021c2cb0103075e25a94926fc0e0eda",
+                "reference": "4a1bb162c021c2cb0103075e25a94926fc0e0eda",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "dBug.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Kwaku Otchere",
+                    "email": "ospinto@hotmail.com",
+                    "homepage": "http://dbug.ospinto.com/",
+                    "role": "Former author"
+                }
+            ],
+            "description": "PHP version of ColdFusion's cfdump. Outputs colored and structured tabular variable information.",
+            "time": "2014-01-20 19:21:40"
+        }
+    ],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "sunra/dbug": 20,
+        "ospinto/dbug": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=5.3.2"
+    },
+    "platform-dev": []
+}
