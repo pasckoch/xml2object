@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4cc293b7153dcfda860a959efc24a726",
-    "content-hash": "eebdf336ac67f11389714a83eee26145",
+    "hash": "01838e9dee04d26097588bd015d12671",
+    "content-hash": "f1be49140a891f789e8e8229b2ba3083",
     "packages": [
         {
             "name": "sunra/dbug",

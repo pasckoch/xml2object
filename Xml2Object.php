@@ -29,6 +29,9 @@ namespace Xml2Object;
  *
  * @author Pascal Koch <info@pascalkoch.net>
  */
+require_once __DIR__.'/lib/DomMechanism.php';
+require_once __DIR__.'/lib/ObjectXml.php';
+require_once __DIR__.'/lib/Xml2ObjectExceptions.php';
 require_once __DIR__ . '/vendor/autoload.php';
 
 class Xml2Object {
