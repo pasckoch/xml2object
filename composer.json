@@ -1,0 +1,20 @@
+{
+    "name": "vendor/xml2object",
+    "description": "parser xml2object.",
+    "authors": [
+        {
+            "name": "Pascal Koch",
+            "email": "app@pascalkoch.net"
+        }
+    ],
+    "require": {
+         "php": ">=5.3.2",      
+        "sunra/dbug": "dev-master"
+    },    
+    "autoload": {
+        "psr-4": {"Xml2Object\\": ""}
+    },
+    "require-dev": {
+        "ospinto/dbug": "dev-master"
+    }
+}
