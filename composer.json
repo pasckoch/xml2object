@@ -3,7 +3,7 @@
     "description": "parser xml2object.",
     "version": "0.2.1",
     "type": "library",
-    "keywords": ["php","parser","xml2object"],
+    "keywords": ["php", "parser", "xml2object"],
     "homepage": "https://github.com/kernel-php/xml2object",
     "license": "GPL-3.0",
     "authors": [
@@ -19,5 +19,11 @@
         "psr-4": {
             "Xml2Object\\": ""
         }
-    } 
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/kernel-php/xml2object"
+        }
+    ]
 }
