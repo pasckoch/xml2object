@@ -1,5 +1,5 @@
 {
-    "name": "vendor/xml2object",
+    "name": "kernel-php/xml2object",
     "description": "parser xml2object.",
     "authors": [
         {
