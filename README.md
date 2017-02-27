@@ -1,6 +1,6 @@
 # xml2object
 
-You can get it with composer.
+You can get it with composer or https://github.com/kernel-php/xml2object.
 
 xml2object is a parser, a DOM analysis makes an object with an xml. The DOM extension is required.
 
