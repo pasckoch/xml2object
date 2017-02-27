@@ -1,6 +1,6 @@
 {
     "name": "kernel-php/xml2object",
-    "description": "parser xml2object.",
+    "description": "xml2object is a parser, a dom analysis makes an object from an xml.",
     "version": "0.2.1",
     "type": "library",
     "keywords": ["php", "parser", "xml2object"],
