@@ -2,7 +2,7 @@
 
 You can get it with composer.
 
-xml2object is a parser, a dOM analysis makes an object with an xml. The DOM extension is required.
+xml2object is a parser, a DOM analysis makes an object with an xml. The DOM extension is required.
 
 The DOM extension required allows you to operate on XML documents through the DOM API with PHP. 
 
