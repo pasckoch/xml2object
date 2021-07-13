@@ -21,6 +21,10 @@ namespace Xml2Object;
  *
  * @author Pascal Koch <info@pascalkoch.net>
  */
+
+use Exception;
+use DOMXPath;
+
 class DomMechanism {
     
     const encoding='utf-8';
