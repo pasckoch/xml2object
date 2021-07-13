@@ -1,6 +1,10 @@
 <?php
+
 namespace Xml2Object;
+
 /*
+ * Parser Xml2Object
+ *
  * Copyright (C) 2017 Pascal Koch <info@pascalkoch.net>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -15,25 +19,23 @@ namespace Xml2Object;
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-/**
- * Parser Xml2Object
- *
  * @author Pascal Koch <info@pascalkoch.net>
  */
-require_once __DIR__.'/lib/DomMechanism.php';
-require_once __DIR__.'/lib/ObjectXml.php';
+
+require_once __DIR__ . '/lib/DomMechanism.php';
+require_once __DIR__ . '/lib/ObjectXml.php';
 
 use Exception;
 
-class Xml2Object {
-
-    public static function getObjectXml($xml) {
-        $ig = new ObjectXml;
-        return $ig->getObjectXml($xml);
-    }
-    
-    public static function getObjectXmlByFilename($filename) {
+class Xml2Object
+{
+    /**
+     * @param $filename
+     * @return mixed
+     * @throws Exception
+     */
+    public static function getObjectXmlByFilename($filename)
+    {
         if (!is_file($filename)) {
             throw new Exception("File $filename doesn't exist.");
         } elseif (sprintf("%u", filesize($filename)) < 1) {
@@ -42,20 +44,47 @@ class Xml2Object {
         return self::getObjectXml(file_get_contents($filename));
     }
 
-    //utilisation array multi dimensional to object
-    public static function arrayToObject($array) {
+    /**
+     * @param $xml
+     * @return mixed
+     */
+    public static function getObjectXml($xml)
+    {
+        $ig = new ObjectXml;
+        return $ig->getObjectXml($xml);
+    }
+
+    /**
+     * utilisation array multi dimensional to object
+     * @param $array
+     * @return mixed
+     */
+    public static function arrayToObject($array)
+    {
         return (json_decode(json_encode($array)));
     }
 
-    //utilisation simple array with numeric keys to object
-    public static function simpleArrayToObject($array, $object = null) {
+    /**
+     * utilisation simple array with numeric keys to object
+     * @param $array
+     * @param null $object
+     * @return mixed|null
+     */
+    public static function simpleArrayToObject($array, $object = null)
+    {
         foreach ($array as $key => $value) {
             $object->$key = $value;
         }
         return $object;
     }
 
-    public static function objectToArray($object, $arr = array()) {
+    /**
+     * @param $object
+     * @param array $arr
+     * @return array|mixed
+     */
+    public static function objectToArray($object, $arr = array())
+    {
         $a_Obj = is_object($object) ? get_object_vars($object) : $object;
         if (empty($a_Obj)) {
             return $arr;

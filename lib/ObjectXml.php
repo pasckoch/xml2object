@@ -1,5 +1,7 @@
 <?php
+
 namespace Xml2Object;
+
 /*
  * Copyright (C) 2017 Pascal Koch <info@pascalkoch.net>
  *
@@ -15,21 +17,50 @@ namespace Xml2Object;
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * @author Pascal Koch <info@pascalkoch.net>
  */
 
 use Exception;
 
-class ObjectXml {
+class ObjectXml
+{
 
     protected $arrayXml;
 
-    public function getObjectXml($str) {
-        return(json_decode(json_encode($this->getArrayXml($str))));
+    /**
+     * @param $str
+     * @return mixed
+     */
+    public function getObjectXml($str)
+    {
+        return (json_decode(json_encode($this->getArrayXml($str))));
     }
 
-    public function getNode($str) {
-        if('' === (string)$str){
-            throw new Exception('Le xml est vide');   
+    /**
+     * @param $str
+     * @return array
+     * @throws Exception
+     */
+    private function getArrayXml($str)
+    {
+        //on pointe sur le noeud message
+        $element = $this->getNode($str);
+        //création récursive du tableau
+        $arrayXml = array();
+        $this->makeArray($element, $arrayXml);
+        $this->simpleArray($arrayXml);
+        return $arrayXml;
+    }
+
+    /**
+     * @param $str
+     * @return \DOMNode|null
+     * @throws Exception
+     */
+    private function getNode($str)
+    {
+        if ('' === (string)$str) {
+            throw new Exception('Le xml est vide');
         }
         //création de l'objet dom element à partir du xml
         $xml = DomMechanism::dom($str, false, true);
@@ -37,30 +68,12 @@ class ObjectXml {
         return $xml->getElementsByTagName('*')->item(0);
     }
 
-    public function getArrayXml($str) {
-         //on pointe sur le noeud message
-         $element = $this->getNode($str);
-         //création récursive du tableau
-         $arrayXml = array();
-         $this->makeArray($element, $arrayXml);
-         $this->simpleArray($arrayXml);
-         return $arrayXml;
-    }
-
-    public function pushArrayXml(&$arrayXml, $node, $name) {
-        if ($node->hasChildNodes() && $node->childNodes->item(0)->nodeType == 3) {
-            $arrayXml[$name][] = $node->nodeValue;
-        }
-    }
-
-    public function attributesMakeArray(&$element, &$arrayXml) {
-        //ajoute les variables de templates des attributes 
-        foreach ($element->attributes as $attrName => $attrNode) {
-            $this->pushArrayXml($arrayXml, $attrNode, $attrName);
-        }
-    }
-
-    public function makeArray(&$element, &$arrayXml) {
+    /**
+     * @param $element
+     * @param $arrayXml
+     */
+    private function makeArray(&$element, &$arrayXml)
+    {
         $this->pushArrayXml($arrayXml, $element, $element->nodeName);
 
         $this->attributesMakeArray($element, $arrayXml[$element->nodeName]);
@@ -69,7 +82,35 @@ class ObjectXml {
         }
     }
 
-    public function simpleArray(&$arrayXml) {
+    /**
+     * @param $arrayXml
+     * @param $node
+     * @param $name
+     */
+    private function pushArrayXml(&$arrayXml, $node, $name)
+    {
+        if ($node->hasChildNodes() && $node->childNodes->item(0)->nodeType == 3) {
+            $arrayXml[$name][] = $node->nodeValue;
+        }
+    }
+
+    /**
+     * @param $element
+     * @param $arrayXml
+     */
+    private function attributesMakeArray(&$element, &$arrayXml)
+    {
+        //ajoute les variables de templates des attributes
+        foreach ($element->attributes as $attrName => $attrNode) {
+            $this->pushArrayXml($arrayXml, $attrNode, $attrName);
+        }
+    }
+
+    /**
+     * @param $arrayXml
+     */
+    private function simpleArray(&$arrayXml)
+    {
         if (is_array($arrayXml)) {
             foreach ($nodes = array_keys($arrayXml) as $key) {
                 if (is_numeric($key) && count($nodes) == 1) {

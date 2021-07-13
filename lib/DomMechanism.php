@@ -1,5 +1,7 @@
 <?php
+
 namespace Xml2Object;
+
 /*
  * Copyright (C) 2017 Pascal Koch <info@pascalkoch.net>
  *
@@ -15,25 +17,38 @@ namespace Xml2Object;
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-/**
- * Description of DomMechanism
- *
  * @author Pascal Koch <info@pascalkoch.net>
  */
 
 use Exception;
 use DOMXPath;
 
-class DomMechanism {
-    
-    const encoding='utf-8';
-    
-    public static function dom($schema, $preserveWhiteSpace = false, $isStr = false) {
+class DomMechanism
+{
+
+    const ENCODING = 'utf-8';
+
+    /**
+     * @param $schema
+     * @param false $preserveWhiteSpace
+     * @param false $isStr
+     * @return \DOMDocument
+     * @throws Exception
+     */
+    public static function dom($schema, $preserveWhiteSpace = false, $isStr = false)
+    {
         return self::xsdDoc($schema, $preserveWhiteSpace, $isStr);
     }
 
-    public static function xsdDoc($schematic, $preserveWhiteSpace = false, $isStr = false) {
+    /**
+     * @param $schematic
+     * @param false $preserveWhiteSpace
+     * @param false $isStr
+     * @return \DOMDocument
+     * @throws Exception
+     */
+    public static function xsdDoc($schematic, $preserveWhiteSpace = false, $isStr = false)
+    {
         $xsdDoc = new \DOMDocument;
         $xsdDoc->preserveWhiteSpace = $preserveWhiteSpace;
         $schema = self::html_specialchars_decode_encodeXml($schematic);
@@ -45,12 +60,35 @@ class DomMechanism {
         return $xsdDoc;
     }
 
-    public static function xsdPath($schemaName) {
+    /**
+     * @param $str
+     * @return array|string|string[]|null
+     */
+    public static function html_specialchars_decode_encodeXml($str)
+    {
+        return (preg_replace_callback('#<(.*)>(.*)</(.*)>#m', 'self::_handle_html_specialchars_decode_encodeXml',
+            $str));
+    }
+
+    /**
+     * @param $schemaName
+     * @return DOMXPath
+     * @throws Exception
+     */
+    public static function xsdPath($schemaName)
+    {
         $xsdDoc = self::xsdDoc($schemaName);
         return new DOMXPath($xsdDoc);
     }
 
-    public static function recursiveNode($objet, $callback, &$element, &$parameter) {
+    /**
+     * @param $objet
+     * @param $callback
+     * @param $element
+     * @param $parameter
+     */
+    public static function recursiveNode($objet, $callback, &$element, &$parameter)
+    {
         foreach ($element->childNodes as $node) {
             if (in_array($node->nodeType, array(3, 8))) {
                 continue;
@@ -60,17 +98,24 @@ class DomMechanism {
         }
     }
 
-    public static function templateVariablePath($element) {
+    /**
+     * @param $element
+     * @return array|false|string|string[]
+     */
+    public static function templateVariablePath($element)
+    {
         //obtient le chemin de la variable (var1.var2.var3) par remplacement du chemin du noeud
         return str_replace('/', '.', substr($element->getNodePath(), 1));
     }
 
-    public static function html_specialchars_decode_encodeXml($str) {
-        return(preg_replace_callback('#<(.*)>(.*)</(.*)>#m', 'self::_handle_html_specialchars_decode_encodeXml', $str));
-    }
-
-    public static function _handle_html_specialchars_decode_encodeXml($match) {
-        return '<' . $match[1] . '>' . htmlspecialchars(htmlspecialchars_decode($match[2]), null, self::encoding) . '</' . $match[3] . '>';
+    /**
+     * @param $match
+     * @return string
+     */
+    public static function _handle_html_specialchars_decode_encodeXml($match)
+    {
+        return '<' . $match[1] . '>' . htmlspecialchars(htmlspecialchars_decode($match[2]), null,
+                self::ENCODING) . '</' . $match[3] . '>';
     }
 
 }
