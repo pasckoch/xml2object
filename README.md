@@ -48,35 +48,7 @@ For CentOS, you will need to run "yum install php-xml", which provides this exte
 
 This process architecture has been built.
 
-    export 	
-        object
-        data 	
-            array
-                0 	
-                    object
-                    data1 	Telephone
-                    data2 	220
-                1 	
-                    object
-                    data1 	Tele
-                    data2 	20
-                2 	
-                    object
-                    data1 	Yep
-                    data2 	120
-                3 	
-                    object
-                    data1 	Frigo
-                    data2 	20
-                4 	
-                    object
-                    data1 	DVD
-                    data2 	89
-                5 	
-                    object
-                    data1 	Camescope
-                    data2 	35
-		    
+```		    
 object(stdClass)#9 (1) {
   ["export"]=>
   object(stdClass)#7 (1) {
@@ -127,3 +99,4 @@ object(stdClass)#9 (1) {
     }
   }
 }
+```
