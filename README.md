@@ -12,6 +12,8 @@ For CentOS, you will need to run "yum install php-xml", which provides this exte
 
 
     require "Xml2Object.php";
+    
+    use \Xml2Object\Xml2Object;
 
     $xml = '<?xml version="1.0" encoding="UTF-8" ?>
         <export>
@@ -42,7 +44,7 @@ For CentOS, you will need to run "yum install php-xml", which provides this exte
     </export>';
 
     //parse xml 2 object
-    $object= \Xml2Object\Xml2Object::getObjectXml($xml);
+    $object= Xml2Object::getObjectXml($xml);
 
 This process architecture has been built.
 
@@ -74,3 +76,54 @@ This process architecture has been built.
                     object
                     data1 	Camescope
                     data2 	35
+		    
+object(stdClass)#9 (1) {
+  ["export"]=>
+  object(stdClass)#7 (1) {
+    ["data"]=>
+    array(6) {
+      [0]=>
+      object(stdClass)#4 (2) {
+        ["data1"]=>
+        string(9) "Telephone"
+        ["data2"]=>
+        string(3) "220"
+      }
+      [1]=>
+      object(stdClass)#5 (2) {
+        ["data1"]=>
+        string(4) "Tele"
+        ["data2"]=>
+        string(2) "20"
+      }
+      [2]=>
+      object(stdClass)#2 (2) {
+        ["data1"]=>
+        string(3) "Yep"
+        ["data2"]=>
+        string(3) "120"
+      }
+      [3]=>
+      object(stdClass)#3 (2) {
+        ["data1"]=>
+        string(5) "Frigo"
+        ["data2"]=>
+        string(2) "20"
+      }
+      [4]=>
+      object(stdClass)#10 (2) {
+        ["data1"]=>
+        string(3) "DVD"
+        ["data2"]=>
+        string(2) "89"
+      }
+      [5]=>
+      object(stdClass)#6 (2) {
+        ["data1"]=>
+        string(9) "Camescope"
+        ["data2"]=>
+        string(2) "35"
+      }
+    }
+  }
+}
