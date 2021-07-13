@@ -23,28 +23,23 @@ namespace Xml2Object;
  */
 require_once __DIR__.'/lib/DomMechanism.php';
 require_once __DIR__.'/lib/ObjectXml.php';
-require_once __DIR__.'/lib/Xml2ObjectExceptions.php';
+
+use Exception;
 
 class Xml2Object {
 
     public static function getObjectXml($xml) {
         $ig = new ObjectXml;
-        try {
-            return $ig->getObjectXml($xml);
-        } catch (Exception $e) {
-            echo $e;
-            return false;
-        }
+        return $ig->getObjectXml($xml);
     }
-
+    
     public static function getObjectXmlByFilename($filename) {
-        try {
-            Xml2ObjectExceptions::isnotFile($filename);
-            return self::getObjectXml(file_get_contents($filename));
-        } catch (Exception $e) {
-            echo $e;
-            return false;
+        if (!is_file($filename)) {
+            throw new Exception("File $filename doesn't exist.");
+        } elseif (sprintf("%u", filesize($filename)) < 1) {
+            throw new Exception("File $filename is empty");
         }
+        return self::getObjectXml(file_get_contents($filename));
     }
 
     //utilisation array multi dimensional to object
