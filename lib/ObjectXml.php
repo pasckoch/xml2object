@@ -17,11 +17,8 @@ namespace Xml2Object;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/**
- * Description of XmlObject
- *
- * @author Pascal Koch <info@pascalkoch.net>
- */
+use Exception;
+
 class ObjectXml {
 
     protected $arrayXml;
@@ -31,25 +28,23 @@ class ObjectXml {
     }
 
     public function getNode($str) {
-        Xml2ObjectExceptions::isnotEmpty($str, 'le Xml est vide', __CLASS__, __FUNCTION__);
-        //cr�ation de l'objet dom element � partir du xml
+        if('' === (string)$str){
+            throw new Exception('Le xml est vide');   
+        }
+        //création de l'objet dom element à partir du xml
         $xml = DomMechanism::dom($str, false, true);
         //on pointe sur le noeud message
         return $xml->getElementsByTagName('*')->item(0);
     }
 
     public function getArrayXml($str) {
-        try {
-            //on pointe sur le noeud message
-            $element = $this->getNode($str);
-            //cr�ation r�cursive du tableau
-            $arrayXml = array();
-            $this->makeArray($element, $arrayXml);
-            $this->simpleArray($arrayXml);
-            return $arrayXml;
-        } catch (Exception $ex) {
-            IGspnExceptions::action($ex);
-        }
+         //on pointe sur le noeud message
+         $element = $this->getNode($str);
+         //création récursive du tableau
+         $arrayXml = array();
+         $this->makeArray($element, $arrayXml);
+         $this->simpleArray($arrayXml);
+         return $arrayXml;
     }
 
     public function pushArrayXml(&$arrayXml, $node, $name) {
