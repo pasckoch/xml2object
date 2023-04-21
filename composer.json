@@ -1,20 +1,20 @@
 {
-    "name": "kernel-php/xml2object",
+    "name": "pasckoch/xml2object",
     "description": "xml2object is a parser, a dom analysis makes an object from an xml.",
-    "version": "0.2.1",
+    "version": "1.0.0",
     "type": "library",
     "keywords": ["php", "parser", "xml2object"],
-    "homepage": "https://github.com/kernel-php/xml2object",
+    "homepage": "https://github.com/pasckoch/xml2object",
     "license": "GPL-3.0",
     "authors": [
         {
             "name": "Pascal Koch",
-            "email": "app@pascalkoch.net"
+            "email": "info@pascalkoch.net"
         }
     ],
     "require": {
         "php": ">=5.3.2",
-        "kernel-php/xml2object": "dev-master"
+        "pasckoch/xml2object": "master"
     },    
     "autoload": {
         "psr-4": {
@@ -24,7 +24,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/kernel-php/xml2object"
+            "url": "https://github.com/pasckoch/xml2object"
         }
     ]
 }
