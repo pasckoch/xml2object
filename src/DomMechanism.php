@@ -5,11 +5,11 @@
  * @license https://github.com/pasckoch/xml2object/blob/master/LICENSE.txt BSD License
  */
 
-namespace Xml2Object;
+namespace Xml2Object\src;
 
 use DOMDocument;
-use Exception;
 use DOMXPath;
+use Exception;
 
 class DomMechanism
 {

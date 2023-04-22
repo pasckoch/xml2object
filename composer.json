@@ -21,7 +21,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Xml2Object\\": ""
+            "Xml2Object\\": "src"
         }
     },
     "repositories": [
