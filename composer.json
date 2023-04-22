@@ -2,7 +2,16 @@
     "name": "pasckoch/xml2object",
     "description": "xml2object is a parser, a dom analysis makes an object from an xml.",
     "type": "library",
-    "keywords": ["php", "parser", "xml2object"],
+    "keywords": [
+        "php",
+        "parser",
+        "xml2object",
+        "converter",
+        "object",
+        "xml",
+        "xml-parser",
+        "stdclass-objects"
+    ],
     "homepage": "https://github.com/pasckoch/xml2object",
     "license": "BSD-3-Clause",
     "authors": [
@@ -21,7 +30,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Xml2Object\\": "src"
+            "Xml2Object\\": ""
         }
     },
     "repositories": [

@@ -5,7 +5,7 @@
  * @license https://github.com/pasckoch/xml2object/blob/master/LICENSE.txt BSD License
  */
 
-namespace Xml2Object\src;
+namespace Xml2Object;
 
 use DOMNode;
 use Exception;
