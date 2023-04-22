@@ -1,11 +1,10 @@
 {
     "name": "pasckoch/xml2object",
     "description": "xml2object is a parser, a dom analysis makes an object from an xml.",
-    "version": "2.0.0",
     "type": "library",
     "keywords": ["php", "parser", "xml2object"],
     "homepage": "https://github.com/pasckoch/xml2object",
-    "license": "GPL-3.0",
+    "license": "BSD-3-Clause",
     "authors": [
         {
             "name": "Pascal Koch",
