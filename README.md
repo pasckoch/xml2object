@@ -5,10 +5,10 @@ You can get it with composer or https://github.com/pasckoch/xml2object.
 If you use Composer, you can install Xml2Object  with the following command:
 
 `
-composer require "pasckoch/xml2object=2.*"
+composer require "pasckoch/xml2object=^2.0"
 `
 
-xml2object is a parser, Xml2object is a parser, it converts xml to stdClass's objects by a DOM analysis. 
+Xml2object is a parser, it converts xml to stdClass's objects by a DOM analysis. 
 The DOM extension is required.
 
 The DOM extension required allows you to operate on XML documents through the DOM API with PHP. 
