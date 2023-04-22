@@ -1,7 +1,7 @@
 {
     "name": "pasckoch/xml2object",
     "description": "xml2object is a parser, a dom analysis makes an object from an xml.",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "type": "library",
     "keywords": ["php", "parser", "xml2object"],
     "homepage": "https://github.com/pasckoch/xml2object",
@@ -14,8 +14,12 @@
     ],
     "require": {
         "php": ">=5.3.2",
-        "pasckoch/xml2object": "master"
-    },    
+        "ext-dom": "*",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "3.*"
+    },
     "autoload": {
         "psr-4": {
             "Xml2Object\\": ""

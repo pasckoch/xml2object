@@ -1,78 +1,64 @@
 <?php
 
-namespace Xml2Object;
-
-/*
- * Copyright (C) 2017 Pascal Koch <info@pascalkoch.net>
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- * @author Pascal Koch <info@pascalkoch.net>
+/**
+ * @author  Pascal Koch <info@pascalkoch.net>
+ * @license https://github.com/pasckoch/xml2object/blob/master/LICENSE.txt BSD License
  */
 
+namespace Xml2Object;
+
+use DOMNode;
 use Exception;
 
 class ObjectXml
 {
-
-    protected $arrayXml;
-
     /**
-     * @param $str
+     * @param $xml
      * @return mixed
+     * @throws Exception
      */
-    public function getObjectXml($str)
+    public function getObjectXml($xml)
     {
-        return (json_decode(json_encode($this->getArrayXml($str))));
+        require_once __DIR__. '/DomMechanism.php';
+        return (json_decode(json_encode($this->convertXmlToArray($xml))));
     }
 
     /**
-     * @param $str
+     * @param $xml
      * @return array
      * @throws Exception
      */
-    private function getArrayXml($str)
+    private function convertXmlToArray($xml)
     {
-        //on pointe sur le noeud message
-        $element = $this->getNode($str);
-        //création récursive du tableau
         $arrayXml = array();
+        $element = $this->getDomNode($xml);
         $this->makeArray($element, $arrayXml);
         $this->simpleArray($arrayXml);
         return $arrayXml;
     }
 
     /**
-     * @param $str
-     * @return \DOMNode|null
+     * @param $xml
+     * @return DOMNode|null
      * @throws Exception
      */
-    private function getNode($str)
+    private function getDomNode($xml)
     {
-        if ('' === (string)$str) {
-            throw new Exception('Le xml est vide');
+        if ('' === (string)$xml) {
+            throw new Exception('Empty xml');
         }
         //création de l'objet dom element à partir du xml
-        $xml = DomMechanism::dom($str, false, true);
+        $domDocument = DomMechanism::dom($xml, false, true);
+        $domNodeList = $domDocument->getElementsByTagName('*');
         //on pointe sur le noeud message
-        return $xml->getElementsByTagName('*')->item(0);
+        return $domNodeList->item(0);
     }
 
     /**
      * @param $element
      * @param $arrayXml
      */
-    private function makeArray(&$element, &$arrayXml)
+    public function makeArray(&$element, &$arrayXml)
     {
         $this->pushArrayXml($arrayXml, $element, $element->nodeName);
 

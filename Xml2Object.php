@@ -1,29 +1,13 @@
 <?php
 
-namespace Xml2Object;
-
-/*
- * Parser Xml2Object
+/**
+ * A helper class for access parser xml or convert array to object and invert
  *
- * Copyright (C) 2017 Pascal Koch <info@pascalkoch.net>
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- * @author Pascal Koch <info@pascalkoch.net>
+ * @author  Pascal Koch <info@pascalkoch.net>
+ * @license https://github.com/pasckoch/xml2object/blob/master/LICENSE.txt BSD License
  */
 
-require_once __DIR__ . '/DomMechanism.php';
-require_once __DIR__ . '/ObjectXml.php';
+namespace Xml2Object;
 
 use Exception;
 
@@ -38,7 +22,8 @@ class Xml2Object
     {
         if (!is_file($filename)) {
             throw new Exception("File $filename doesn't exist.");
-        } elseif (sprintf("%u", filesize($filename)) < 1) {
+        }
+        if (sprintf("%u", filesize($filename)) < 1) {
             throw new Exception("File $filename is empty");
         }
         return self::getObjectXml(file_get_contents($filename));
@@ -47,11 +32,13 @@ class Xml2Object
     /**
      * @param $xml
      * @return mixed
+     * @throws Exception
      */
     public static function getObjectXml($xml)
     {
-        $ig = new ObjectXml;
-        return $ig->getObjectXml($xml);
+        require_once __DIR__. '/ObjectXml.php';
+        $parser = new ObjectXml();
+        return $parser->getObjectXml($xml);
     }
 
     /**
@@ -81,7 +68,7 @@ class Xml2Object
     /**
      * @param $object
      * @param array $arr
-     * @return array|mixed
+     * @return array
      */
     public static function objectToArray($object, $arr = array())
     {
@@ -95,5 +82,4 @@ class Xml2Object
         }
         return $arr;
     }
-
 }

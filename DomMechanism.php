@@ -1,25 +1,13 @@
 <?php
 
-namespace Xml2Object;
-
-/*
- * Copyright (C) 2017 Pascal Koch <info@pascalkoch.net>
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- * @author Pascal Koch <info@pascalkoch.net>
+/**
+ * @author  Pascal Koch <info@pascalkoch.net>
+ * @license https://github.com/pasckoch/xml2object/blob/master/LICENSE.txt BSD License
  */
 
+namespace Xml2Object;
+
+use DOMDocument;
 use Exception;
 use DOMXPath;
 
@@ -32,7 +20,7 @@ class DomMechanism
      * @param $schema
      * @param false $preserveWhiteSpace
      * @param false $isStr
-     * @return \DOMDocument
+     * @return DOMDocument
      * @throws Exception
      */
     public static function dom($schema, $preserveWhiteSpace = false, $isStr = false)
@@ -44,18 +32,18 @@ class DomMechanism
      * @param $schematic
      * @param false $preserveWhiteSpace
      * @param false $isStr
-     * @return \DOMDocument
+     * @return DOMDocument
      * @throws Exception
      */
     public static function xsdDoc($schematic, $preserveWhiteSpace = false, $isStr = false)
     {
-        $xsdDoc = new \DOMDocument;
+        $xsdDoc = new DOMDocument;
         $xsdDoc->preserveWhiteSpace = $preserveWhiteSpace;
-        $schema = self::html_specialchars_decode_encodeXml($schematic);
+        $schema = self::htmlSpecialCharsDecodeEncodeXml($schematic);
         if (!$isStr && !$xsdDoc->load($schema)) {
             throw new Exception("$schema introuvable");
         } elseif ($isStr && !$xsdDoc->loadXml($schema)) {
-            throw new Exception('Xml illisible' . $schema);
+            throw new Exception(sprintf('Xml illisible %s', $schema));
         }
         return $xsdDoc;
     }
@@ -64,9 +52,9 @@ class DomMechanism
      * @param $str
      * @return array|string|string[]|null
      */
-    public static function html_specialchars_decode_encodeXml($str)
+    public static function htmlSpecialCharsDecodeEncodeXml($str)
     {
-        return (preg_replace_callback('#<(.*)>(.*)</(.*)>#m', 'self::_handle_html_specialchars_decode_encodeXml',
+        return (preg_replace_callback('#<(.*)>(.*)</(.*)>#m', 'self::handleHtmlSpecialCharsDecodeEncodeXml',
             $str));
     }
 
@@ -112,7 +100,7 @@ class DomMechanism
      * @param $match
      * @return string
      */
-    public static function _handle_html_specialchars_decode_encodeXml($match)
+    public static function handleHtmlSpecialCharsDecodeEncodeXml($match)
     {
         return '<' . $match[1] . '>' . htmlspecialchars(htmlspecialchars_decode($match[2]), null,
                 self::ENCODING) . '</' . $match[3] . '>';
