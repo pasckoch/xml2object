@@ -19,7 +19,7 @@ class ObjectXml
      */
     public function getObjectXml($xml)
     {
-        require_once __DIR__. '/DomMechanism.php';
+        require_once __DIR__ . '/DomMechanism.php';
         return (json_decode(json_encode($this->convertXmlToArray($xml))));
     }
 
@@ -38,6 +38,7 @@ class ObjectXml
     }
 
     /**
+     * get the Root Node of the Dom Document based on the XML string
      * @param $xml
      * @return DOMNode|null
      * @throws Exception
@@ -47,10 +48,9 @@ class ObjectXml
         if ('' === (string)$xml) {
             throw new Exception('Empty xml');
         }
-        //création de l'objet dom element à partir du xml
+
         $domDocument = DomMechanism::dom($xml, false, true);
         $domNodeList = $domDocument->getElementsByTagName('*');
-        //on pointe sur le noeud message
         return $domNodeList->item(0);
     }
 
@@ -81,12 +81,12 @@ class ObjectXml
     }
 
     /**
+     * add attributes and their values in the tree
      * @param $element
      * @param $arrayXml
      */
     private function attributesMakeArray(&$element, &$arrayXml)
     {
-        //ajoute les variables de templates des attributes
         foreach ($element->attributes as $attrName => $attrNode) {
             $this->pushArrayXml($arrayXml, $attrNode, $attrName);
         }
@@ -108,5 +108,4 @@ class ObjectXml
             }
         }
     }
-
 }

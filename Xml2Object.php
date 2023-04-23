@@ -36,7 +36,7 @@ class Xml2Object
      */
     public static function getObjectXml($xml)
     {
-        require_once __DIR__. '/ObjectXml.php';
+        require_once __DIR__ . '/ObjectXml.php';
         $parser = new ObjectXml();
         return $parser->getObjectXml($xml);
     }
